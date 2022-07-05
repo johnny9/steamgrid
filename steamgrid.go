@@ -51,6 +51,7 @@ func startApplication() {
 	nonSteamOnly := flag.Bool("nonsteamonly", false, "Only search artwork for Non-Steam-Games")
 	appIDs := flag.String("appids", "", "Comma separated list of appIds that should be processed")
 	onlyMissingArtwork := flag.Bool("onlymissingartwork", false, "Only download artworks missing on the official servers")
+	icons := flag.Bool("icons", false, "Process missing icons")
 	flag.Parse()
 	if flag.NArg() == 1 {
 		steamDir = &flag.Args()[0]
@@ -117,6 +118,13 @@ func startApplication() {
 	}
 	if len(users) == 0 {
 		errorAndExit(errors.New("No users found at Steam/userdata. Have you used Steam before in this computer?"))
+	}
+
+	if *icons {
+		for _, user := range users {
+			addIconToGame(user)
+		}
+		return
 	}
 
 	nOverlaysApplied := 0
