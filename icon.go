@@ -30,6 +30,14 @@ func addIconToGame(user User) {
 	//Covert to JSON
 	rawJSON, err := json.Marshal(vdfMap)
 
+	for _, shortcut := range vdfMap["shortcuts"].(vdf.Map) {
+		log.Print(shortcut.(vdf.Map)["appid"])
+		if shortcut.(vdf.Map)["appid"].(uint32) == 3997766472 {
+			shortcut.(vdf.Map)["icon"] = "hello"
+			log.Print(vdfMap)
+		}
+	}
+
 	if err != nil {
 		panic(err)
 	}
