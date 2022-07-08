@@ -159,6 +159,8 @@ func getSteamGridDBImage(game *Game, artStyleExtensions []string, steamGridDBApi
 			baseURL = steamGridDBBaseURL + "/heroes"
 		case ".logo":
 			baseURL = steamGridDBBaseURL + "/logos"
+		case ".icon":
+			baseURL = steamGridDBBaseURL + "/icons"
 		}
 		url := baseURL + "/steam/" + game.ID + artStyleExtensions[3]
 
@@ -358,7 +360,7 @@ const steamCdnURLFormat = `cdn.akamai.steamstatic.com/steam/apps/%v/`
 // images).
 func getImageAlternatives(game *Game, artStyle string, artStyleExtensions []string, skipSteam bool, steamGridDBApiKey string, IGDBSecret string, IGDBClient string, skipGoogle bool, onlyMissingArtwork bool) (response *http.Response, from string, err error) {
 	from = "steam server"
-	if !skipSteam {
+	if !skipSteam && artStyle != "Icon" {
 		response, err = tryDownload(fmt.Sprintf(akamaiURLFormat+artStyleExtensions[2], game.ID))
 		if err == nil && response != nil {
 			if onlyMissingArtwork {
