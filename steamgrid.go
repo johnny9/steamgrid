@@ -72,6 +72,7 @@ func startApplication() {
 		"Cover":  []string{"p", ".cover", "library_600x900_2x.jpg", steamGridDBCoverFilter},
 		"Hero":   []string{"_hero", ".hero", "library_hero.jpg", steamGridDBHeroFilter},
 		"Logo":   []string{"_logo", ".logo", "logo.png", steamGridDBLogoFilter},
+		"Icon":   []string{"_icon", ".icon", "n/a", ""},
 	}
 
 	if *skipBanner {
@@ -134,30 +135,35 @@ func startApplication() {
 		"Cover":  []*Game{},
 		"Hero":   []*Game{},
 		"Logo":   []*Game{},
+		"Icon":   []*Game{},
 	}
 	steamGridDB := map[string][]*Game{
 		"Banner": []*Game{},
 		"Cover":  []*Game{},
 		"Hero":   []*Game{},
 		"Logo":   []*Game{},
+		"Icon":   []*Game{},
 	}
 	IGDB := map[string][]*Game{
 		"Banner": []*Game{},
 		"Cover":  []*Game{},
 		"Hero":   []*Game{},
 		"Logo":   []*Game{},
+		"Icon":   []*Game{},
 	}
 	searchedGames := map[string][]*Game{
 		"Banner": []*Game{},
 		"Cover":  []*Game{},
 		"Hero":   []*Game{},
 		"Logo":   []*Game{},
+		"Icon":   []*Game{},
 	}
 	failedGames := map[string][]*Game{
 		"Banner": []*Game{},
 		"Cover":  []*Game{},
 		"Hero":   []*Game{},
 		"Logo":   []*Game{},
+		"Icon":   []*Game{},
 	}
 	var errorMessages []string
 
