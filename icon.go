@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"io/ioutil"
 	"log"
 	"os"
@@ -27,9 +26,6 @@ func addIconToGame(user User) {
 		panic(err)
 	}
 
-	//Covert to JSON
-	rawJSON, err := json.Marshal(vdfMap)
-
 	for _, shortcut := range vdfMap["shortcuts"].(vdf.Map) {
 		log.Print(shortcut.(vdf.Map)["appid"])
 		if shortcut.(vdf.Map)["appid"].(uint32) == 3997766472 {
@@ -37,13 +33,6 @@ func addIconToGame(user User) {
 			log.Print(vdfMap)
 		}
 	}
-
-	if err != nil {
-		panic(err)
-	}
-
-	//Log
-	log.Print(string(rawJSON))
 
 	//Write VDF
 	rawVdf, err := vdf.WriteVdf(vdfMap)
